@@ -13,6 +13,7 @@ namespace ToDo.Presistance.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyGlobalSoftDeletedFilteration();
             modelBuilder.ApplyConfiguration(new TaskEntityConfiguration());
             modelBuilder.HasDefaultSchema("Application");
@@ -29,8 +30,6 @@ namespace ToDo.Presistance.Contexts
             this.ModifyTrackerEntriesForAuditing();
             return base.SaveChangesAsync(cancellationToken);
         }
-
-        override 
 
         public virtual DbSet<TaskEntity> Tasks { get; set; }
     }

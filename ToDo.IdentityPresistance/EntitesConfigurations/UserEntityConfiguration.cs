@@ -10,8 +10,7 @@ namespace ToDo.IdentityPresistance.EntitesConfigurations
         public void Configure(EntityTypeBuilder<User> builder)
         {
             builder.ToTable("Users");
-            builder.HasMany(u => u.Tasks).WithOne(t => t.User);
-
+            
             var passwordHasher = new PasswordHasher<User>();
             var email = "abdelrahman@test.com";
             var seedUser = new User
@@ -22,9 +21,11 @@ namespace ToDo.IdentityPresistance.EntitesConfigurations
                 UserName = email ,
                 PhoneNumber = "224466889" ,
                 NormalizedUserName = email.ToUpper() ,
-                EmailConfirmed = true
+                EmailConfirmed = true,
+                CreationDate = DateTime.Now,
+                LastModificationDate = DateTime.Now
             };
-            seedUser.PasswordHash = passwordHasher.HashPassword(seedUser , "P@ssword1");
+            seedUser.PasswordHash = passwordHasher.HashPassword(seedUser , "12345");
 
             builder.HasData(seedUser);
         }

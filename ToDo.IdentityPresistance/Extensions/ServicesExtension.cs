@@ -11,12 +11,18 @@ namespace ToDo.IdentityPresistance.Extensions
         public static void RegisterIdentityPresistanceServices(this IServiceCollection services, IConfiguration configuration)
         {
             services
-                .AddSqlServer<ApplicationIdentityDbContext>(configuration.GetConnectionString("ApplicationIdentityDbContext"));
+                .AddSqlServer<ApplicationIdentityDbContext>(configuration.GetConnectionString("ApplicationIdentityDbContext"), options =>
+                {
+                    options.MigrationsAssembly(typeof(ApplicationIdentityDbContext).Assembly.FullName);
+                });
            
             services
                 .AddIdentityCore<User>()
+                .AddRoles<IdentityRole<Guid>>()
                 .AddEntityFrameworkStores<ApplicationIdentityDbContext>()
                 .AddDefaultTokenProviders();
+
+            services.AddDataProtection();
         }
     }
 }

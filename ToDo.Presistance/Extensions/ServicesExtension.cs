@@ -8,7 +8,11 @@ namespace ToDo.Presistance.Extensions
     {
         public static void RegisterPresistanceServices(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSqlServer<ApplicationDbContext>(configuration.GetConnectionString("ApplicationDbContext"));
+            services
+                .AddSqlServer<ApplicationDbContext>(configuration.GetConnectionString("ApplicationDbContext"), options =>
+                {
+                    options.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
+                });
         }
     }
 }
