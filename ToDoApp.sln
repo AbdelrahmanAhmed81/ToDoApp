@@ -5,6 +5,19 @@ VisualStudioVersion = 17.14.36221.1 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDoApp.API", "ToDoApp.API\ToDoApp.API.csproj", "{11E55AEE-E4E4-4F83-983D-B5AA4C3F59F4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SolutionItems", "SolutionItems", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Packages.props = Directory.Packages.props
+		Nuget.Config = Nuget.Config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Presentation", "Presentation", "{E3434128-6A54-43D0-8804-0EC13858EEDD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{8BE83410-7D2B-48A4-AC2C-F542F17B9A23}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToDo.Domain", "ToDo.Domain\ToDo.Domain.csproj", "{86018CD2-FA30-410A-9DAC-89E25EFFD414}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +28,17 @@ Global
 		{11E55AEE-E4E4-4F83-983D-B5AA4C3F59F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{11E55AEE-E4E4-4F83-983D-B5AA4C3F59F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{11E55AEE-E4E4-4F83-983D-B5AA4C3F59F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86018CD2-FA30-410A-9DAC-89E25EFFD414}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86018CD2-FA30-410A-9DAC-89E25EFFD414}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86018CD2-FA30-410A-9DAC-89E25EFFD414}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86018CD2-FA30-410A-9DAC-89E25EFFD414}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{11E55AEE-E4E4-4F83-983D-B5AA4C3F59F4} = {E3434128-6A54-43D0-8804-0EC13858EEDD}
+		{86018CD2-FA30-410A-9DAC-89E25EFFD414} = {8BE83410-7D2B-48A4-AC2C-F542F17B9A23}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A1916C42-7148-4B48-93DD-8362CF2878F4}
