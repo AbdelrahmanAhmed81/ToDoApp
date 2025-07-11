@@ -1,9 +1,8 @@
 ﻿namespace ToDo.Domain.Contracts
 {
-    internal interface IBaseEntity
+    internal interface IAuditableEntity
     {
         DateTime CreationDate { get; set; }
         DateTime LastModificationDate { get; set; }
-        bool IsDeleted { get; set; }
     }
 }

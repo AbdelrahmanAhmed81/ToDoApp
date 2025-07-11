@@ -1,6 +1,6 @@
 ﻿namespace ToDo.Domain.Enums
 {
-    internal enum TaskPriority
+    public enum TaskPriority
     {
         NoPriority,
         LowPriority,

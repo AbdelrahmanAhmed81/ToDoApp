@@ -4,7 +4,7 @@ using ToDo.Domain.Enums;
 
 namespace ToDo.Domain.Entities
 {
-    internal class Task : BaseEntityIdentified
+    public class Task : BaseEntityIdentified
     {
         public string Title { get; set; }
         public DateTime DueDate { get; set; }
