@@ -1,6 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ToDo.Application.Contracts.Repositories;
 using ToDo.Presistance.Contexts;
+using ToDo.Presistance.Repositories;
 
 namespace ToDo.Presistance.Extensions
 {
@@ -13,6 +15,8 @@ namespace ToDo.Presistance.Extensions
                 {
                     options.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
                 });
+
+            services.AddScoped<ITaskRepository, TaskRepository>();
         }
     }
 }
