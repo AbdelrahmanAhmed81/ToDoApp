@@ -7,6 +7,6 @@ namespace ToDo.Domain.Common
         public DateTime CreationDate { get; set; } = DateTime.UtcNow;
         public DateTime LastModificationDate { get; set; }
         public bool IsDeleted { get; set; }
-        public DateTime DeletionDate { get; set; }
+        public DateTime? DeletionDate { get; set; } = null;
     }
 }
