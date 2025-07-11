@@ -5,4 +5,9 @@
     <Nullable>disable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ToDo.IdentityPresistance\ToDo.IdentityPresistance.csproj" />
+    <ProjectReference Include="..\ToDo.Presistance\ToDo.Presistance.csproj" />
+  </ItemGroup>
 </Project>

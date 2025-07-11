@@ -15,6 +15,7 @@ namespace ToDo.Presistance.Contexts
         {
             modelBuilder.ApplyGlobalSoftDeletedFilteration();
             modelBuilder.ApplyConfiguration(new TaskEntityConfiguration());
+            modelBuilder.HasDefaultSchema("Application");
         }
 
         public override int SaveChanges()

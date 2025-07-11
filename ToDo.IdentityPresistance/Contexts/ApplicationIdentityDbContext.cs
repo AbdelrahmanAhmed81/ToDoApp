@@ -12,9 +12,10 @@ namespace ToDo.IdentityPresistance.Contexts
         {
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            builder.ApplyConfiguration(new UserEntityConfiguration());
+            modelBuilder.ApplyConfiguration(new UserEntityConfiguration());
+            modelBuilder.HasDefaultSchema("Identity");
         }
     }
 }

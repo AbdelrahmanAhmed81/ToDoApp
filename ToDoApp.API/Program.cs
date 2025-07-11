@@ -1,3 +1,7 @@
+using ToDo.Presistance.Extensions;
+using ToDo.IdentityPresistance.Extensions;
+
+
 namespace ToDoApp.API
 {
     public class Program
@@ -9,6 +13,8 @@ namespace ToDoApp.API
             // Add services to the container.
 
             builder.Services.AddControllers();
+            builder.Services.RegisterPresistanceServices(builder.Configuration);
+            builder.Services.RegisterIdentityPresistanceServices(builder.Configuration);
 
             var app = builder.Build();
 
