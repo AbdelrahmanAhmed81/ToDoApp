@@ -7,7 +7,7 @@ namespace ToDo.Presistance.Repositories
 {
     public abstract class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
     {
-        private ApplicationDbContext _context;
+        protected ApplicationDbContext _context;
         public GenericRepository(ApplicationDbContext context)
         {
             _context = context;

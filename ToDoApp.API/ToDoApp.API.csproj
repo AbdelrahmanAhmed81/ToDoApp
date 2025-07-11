@@ -7,11 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design"/>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools"/>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ToDo.Application\ToDo.Application.csproj" />
     <ProjectReference Include="..\ToDo.IdentityPresistance\ToDo.IdentityPresistance.csproj" />
     <ProjectReference Include="..\ToDo.Presistance\ToDo.Presistance.csproj" />
   </ItemGroup>

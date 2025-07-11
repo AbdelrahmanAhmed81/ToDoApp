@@ -2,7 +2,7 @@
 using ToDo.Domain.Common;
 using ToDo.Presistance.EntitesConfigurations;
 using ToDo.Presistance.Extensions;
-using TaskEntity = ToDo.Domain.Entities.Task;
+
 
 namespace ToDo.Presistance.Contexts
 {

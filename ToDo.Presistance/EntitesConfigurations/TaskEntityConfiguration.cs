@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using TaskEntity = ToDo.Domain.Entities.Task;
+
 
 namespace ToDo.Presistance.EntitesConfigurations
 {

@@ -1,6 +1,7 @@
-﻿using ToDo.Application.Contracts.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using ToDo.Application.Contracts.Repositories;
 using ToDo.Presistance.Contexts;
-using TaskEntity = ToDo.Domain.Entities.Task;
+
 
 namespace ToDo.Presistance.Repositories
 {
@@ -8,6 +9,11 @@ namespace ToDo.Presistance.Repositories
     {
         public TaskRepository(ApplicationDbContext context) : base(context)
         {
+        }
+
+        public async Task<IEnumerable<TaskEntity>> GetTasksByUserIdAsync(Guid userId)
+        {
+            return await _context.Tasks.AsNoTracking().Where(t => t.UserId == userId).ToListAsync();
         }
     }
 }

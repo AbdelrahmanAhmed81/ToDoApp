@@ -10,4 +10,14 @@
     <ProjectReference Include="..\ToDo.Domain\ToDo.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Features\Tasks\Commands\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Ardalis.Result.AspNetCore" />
+    <PackageReference Include="AutoMapper" />
+    <PackageReference Include="MediatR" />
+  </ItemGroup>
+
 </Project>
