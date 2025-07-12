@@ -5,13 +5,13 @@ using ToDo.Application.Contracts.Repositories;
 
 namespace ToDo.Application.Features.Tasks.Commands.CreateTask
 {
-    public class CreateTaskHandler : IRequestHandler<CreateTaskRequest, Result<bool>>
+    public class UpdateTaskHandler : IRequestHandler<CreateTaskRequest, Result<bool>>
     {
         private readonly ITaskRepository _taskRepository;
         private readonly IMapper _mapper;
         private readonly CreateTaskValidator _requestValidator;
 
-        public CreateTaskHandler(ITaskRepository taskRepository, IMapper mapper, CreateTaskValidator requestValidator)
+        public UpdateTaskHandler(ITaskRepository taskRepository, IMapper mapper, CreateTaskValidator requestValidator)
         {
             _taskRepository = taskRepository;
             _mapper = mapper;
@@ -29,6 +29,7 @@ namespace ToDo.Application.Features.Tasks.Commands.CreateTask
                 }
 
                 var taskEntity = _mapper.Map<TaskEntity>(request.CreateTaskDTO);
+                taskEntity.UserId = request.RequestSenderUserId;
                 var creationResult = await _taskRepository.AddAsync(taskEntity);
 
                 if (!creationResult)

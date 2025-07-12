@@ -10,6 +10,7 @@ namespace ToDo.Application.Profiles
         {
             CreateMap<TaskEntity, TaskDTO>().ReverseMap();
             CreateMap<TaskEntity, CreateTaskDTO>().ReverseMap();
+            CreateMap<TaskEntity, UpdateTaskDTO>().ReverseMap();
         }
     }
 }

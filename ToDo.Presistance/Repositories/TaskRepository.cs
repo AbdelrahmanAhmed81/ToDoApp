@@ -18,7 +18,7 @@ namespace ToDo.Presistance.Repositories
 
         public async Task<bool> IsTaskExists(Guid taskId, CancellationToken token)
         {
-            var task = await GetByIdAsync(taskId);
+            var task = await GetByIdAsync(taskId, false);
             return task != null;
         }
     }

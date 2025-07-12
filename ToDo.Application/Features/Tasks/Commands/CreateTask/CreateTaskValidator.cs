@@ -13,7 +13,7 @@ namespace ToDo.Application.Features.Tasks.Commands.CreateTask
             _taskRepository = taskRepository;
             _userRepository = userRepository;
 
-            RuleFor(request => request.CreateTaskDTO.UserId)
+            RuleFor(request => request.RequestSenderUserId)
                 .MustAsync(_userRepository.IsUserExistsAsync).WithMessage("User not found");
 
             RuleFor(request => request.CreateTaskDTO.Title)
@@ -31,7 +31,7 @@ namespace ToDo.Application.Features.Tasks.Commands.CreateTask
 
         private async Task<bool> IsTitleUnique(CreateTaskRequest request, string title, CancellationToken cancellationToken)
         {
-            var userTasks = await _taskRepository.GetTasksByUserIdAsync(request.CreateTaskDTO.UserId);
+            var userTasks = await _taskRepository.GetTasksByUserIdAsync(request.RequestSenderUserId);
             if (userTasks == null || !userTasks.Any())
             { return true; }
 

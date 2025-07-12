@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using ToDo.Application.DTOs;
 using ToDo.Application.Features.Tasks.Commands.CreateTask;
 using ToDo.Application.Features.Tasks.Commands.DeleteTask;
+using ToDo.Application.Features.Tasks.Commands.UpdateTask;
 using ToDo.Application.Features.Tasks.Queries.GetTasksByUserId;
 
 namespace ToDoApp.API.Controllers
@@ -31,7 +32,16 @@ namespace ToDoApp.API.Controllers
         [HttpPost("add")]
         public async Task<ActionResult<bool>> AddTask([FromBody] CreateTaskDTO model)
         {
-            var request = new CreateTaskRequest() { CreateTaskDTO = model };
+            var request = new CreateTaskRequest() { RequestSenderUserId = Guid.Parse("1C48F7A0-2DBC-42D8-B31C-E53B6B2244B5"), CreateTaskDTO = model };
+            var response = await _mediator.Send(request);
+
+            return response.ToActionResult(this);
+        }
+
+        [HttpPut("update")]
+        public async Task<ActionResult<bool>> UpdateTask([FromBody] UpdateTaskDTO model)
+        {
+            var request = new UpdateTaskRequest() { RequestSenderUserId = Guid.Parse("1C48F7A0-2DBC-42D8-B31C-E53B6B2244B5"), UpdateTaskDTO = model };
             var response = await _mediator.Send(request);
 
             return response.ToActionResult(this);

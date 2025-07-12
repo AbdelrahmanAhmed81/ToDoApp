@@ -5,7 +5,7 @@ using ToDo.Presistance.Contexts;
 
 namespace ToDo.Presistance.Repositories
 {
-    public abstract class GenericRepository<T> : IGenericRepository<T> where T : BaseEntity
+    public abstract class GenericRepository<T> : IGenericRepository<T> where T : BaseEntityIdentified
     {
         protected ApplicationDbContext _context;
         public GenericRepository(ApplicationDbContext context)
@@ -18,16 +18,16 @@ namespace ToDo.Presistance.Repositories
             int result = await _context.SaveChangesAsync();
             return result == 1;
         }
-        public virtual async Task<T> UpdateAsync(T entity)
+        public virtual async Task<bool> UpdateAsync(T entity)
         {
             entity.LastModificationDate = DateTime.UtcNow;
             _context.Entry(entity).State = EntityState.Modified;
-            await _context.SaveChangesAsync();
-            return entity;
+            int result = await _context.SaveChangesAsync();
+            return result == 1;
         }
         public virtual async Task<bool> DeleteAsync(T entity)
         {
-            _context. Remove(entity);
+            _context.Remove(entity);
             int result = await _context.SaveChangesAsync();
             return result == 1;
         }
@@ -36,10 +36,12 @@ namespace ToDo.Presistance.Repositories
             return await _context.Set<T>().AsNoTracking().ToListAsync();
 
         }
-        public virtual async Task<T> GetByIdAsync(Guid id)
+        public virtual async Task<T> GetByIdAsync(Guid id, bool trackEntity = true)
         {
-            return await _context.Set<T>().FindAsync(id);
-
+            if (trackEntity)
+                return await _context.Set<T>().FindAsync(id);
+            else
+                return await _context.Set<T>().AsNoTracking().FirstOrDefaultAsync(e => e.ID == id);
         }
     }
 }

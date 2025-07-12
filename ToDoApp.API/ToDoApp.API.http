@@ -16,31 +16,21 @@ Content-Type: application/json
 }
 ###
 
-POST {{ToDoApp.API_HostAddress}}/api/tasks/add
+Delete {{ToDoApp.API_HostAddress}}/api/tasks/delete/5B59BA9D-000D-40C0-9984-D40C4044BB1B
+Content-Type: application/json
+
+###
+
+
+PUT {{ToDoApp.API_HostAddress}}/api/tasks/update
 Content-Type: application/json
 {
-  "UserId": "1C48F7A0-2DBC-42D8-B31C-E53B6B2244B5",
+  "Id":"5AD07067-D57F-4E54-AABA-9A7B70D3E107",
   "Title": "go to gym",
-  "Note": "buy protein bar",
-  "DueDate": "2025-06-13T05:30:00",
-  "Priority": 2
+  "Note": "buy 3 protein bars",
+  "DueDate": "2025-07-13T05:30:00",
+  "Priority": 2,
+  "IsDone": true
 }
-
-###
-
-POST {{ToDoApp.API_HostAddress}}/api/tasks/add
-Content-Type: application/json
-{
-  "UserId": "1C48F7A0-2DBC-42D8-B31C-E53B6B2244B5",
-  "Title": "buy gift for abdo's birthday",
-  "Note": "buy a new watch",
-  "DueDate": "2025-08-22T07:30:00",
-  "Priority": 0
-}
-
-###
-
-Delete {{ToDoApp.API_HostAddress}}/api/tasks/delete/E9895866-C02B-4EAC-A7E0-8C6A2D1C7060
-Content-Type: application/json
 
 ###
