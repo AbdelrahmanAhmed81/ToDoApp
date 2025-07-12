@@ -2,7 +2,6 @@
 {
     public abstract class BaseEntityIdentified : BaseEntity
     {
-        public Guid ID { get; set; }
-
+        public Guid ID { get; set; } = Guid.NewGuid();
     }
 }

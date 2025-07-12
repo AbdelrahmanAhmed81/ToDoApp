@@ -1,8 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ToDo.Application.Contracts.Repositories;
 using ToDo.Domain.Entities.Identity;
 using ToDo.IdentityPresistance.Contexts;
+using ToDo.IdentityPresistance.Repositories;
 
 namespace ToDo.IdentityPresistance.Extensions
 {
@@ -15,7 +17,7 @@ namespace ToDo.IdentityPresistance.Extensions
                 {
                     options.MigrationsAssembly(typeof(ApplicationIdentityDbContext).Assembly.FullName);
                 });
-           
+
             services
                 .AddIdentityCore<User>()
                 .AddRoles<IdentityRole<Guid>>()
@@ -23,6 +25,8 @@ namespace ToDo.IdentityPresistance.Extensions
                 .AddDefaultTokenProviders();
 
             services.AddDataProtection();
+
+            services.AddScoped<IUserRepository, UserRepository>();
         }
     }
 }

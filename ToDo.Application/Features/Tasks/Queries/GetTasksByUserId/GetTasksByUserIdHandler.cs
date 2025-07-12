@@ -26,13 +26,12 @@ namespace ToDo.Application.Features.Tasks.Queries.GetTasksByUserId
                 {
                     return Result.NoContent();
                 }
-
                 var result = _mapper.Map<IEnumerable<TaskDTO>>(userTaks);
                 return Result.Success(result);
             }
             catch (Exception ex)
             {
-                return Result.CriticalError("An errors occured while fetching user tasks");
+                return Result.CriticalError("An error occured while fetching user tasks");
             }
 
         }

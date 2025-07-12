@@ -2,6 +2,7 @@
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ToDo.Application.DTOs;
+using ToDo.Application.Features.Tasks.Commands.CreateTask;
 using ToDo.Application.Features.Tasks.Queries.GetTasksByUserId;
 
 namespace ToDoApp.API.Controllers
@@ -21,6 +22,15 @@ namespace ToDoApp.API.Controllers
         public async Task<ActionResult<IEnumerable<TaskDTO>>> GetUserTasks([FromRoute] Guid id)
         {
             var request = new GetTasksByUserIdRequest() { UserId = id };
+            var response = await _mediator.Send(request);
+
+            return response.ToActionResult(this);
+        }
+
+        [HttpPost("add")]
+        public async Task<ActionResult<bool>> AddTask([FromBody] CreateTaskDTO model)
+        {
+            var request = new CreateTaskRequest() { CreateTaskDTO = model };
             var response = await _mediator.Send(request);
 
             return response.ToActionResult(this);

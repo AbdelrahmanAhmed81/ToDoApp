@@ -8,7 +8,8 @@ namespace ToDo.Application.Profiles
     {
         public TaskProfile()
         {
-            CreateMap<TaskEntity,TaskDTO>().ReverseMap();
+            CreateMap<TaskEntity, TaskDTO>().ReverseMap();
+            CreateMap<TaskEntity, CreateTaskDTO>().ReverseMap();
         }
     }
 }

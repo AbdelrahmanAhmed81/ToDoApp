@@ -6,7 +6,7 @@ namespace ToDo.Application.Contracts.Repositories
     {
         Task<IEnumerable<T>> GetAllAsync();
         Task<T> GetByIdAsync(Guid id);
-        Task<int> AddAsync(T entity);
+        Task<bool> AddAsync(T entity);
         Task<T> UpdateAsync(T entity);
         Task<bool> DeleteAsync(T entity);
     }

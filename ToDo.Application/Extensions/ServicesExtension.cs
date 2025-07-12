@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
+using ToDo.Application.Features.Tasks.Commands.CreateTask;
 
 namespace ToDo.Application.Extensions
 {
@@ -18,6 +19,8 @@ namespace ToDo.Application.Extensions
                 options.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
                 options.Lifetime = ServiceLifetime.Scoped;
             });
+
+            services.AddScoped<CreateTaskValidator>();
         }
     }
 }

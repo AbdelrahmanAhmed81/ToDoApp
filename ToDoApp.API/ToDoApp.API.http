@@ -1,6 +1,41 @@
-@ToDoApp.API_HostAddress = https://localhost:7097
+@ToDoApp.API_HostAddress = https://localhost:44301
 
 GET {{ToDoApp.API_HostAddress}}/api/tasks/user-tasks/1C48F7A0-2DBC-42D8-B31C-E53B6B2244B5
 Accept: application/json
+
+###
+
+POST {{ToDoApp.API_HostAddress}}/api/tasks/add
+Content-Type: application/json
+{
+  "UserId": "1C48F7A0-2DBC-42D8-B31C-E53B6B2244B5",
+  "Title": "go to gym",
+  "Note": "buy protein bar",
+  "DueDate": "2025-07-13T05:30:00",
+  "Priority": 2
+}
+###
+
+POST {{ToDoApp.API_HostAddress}}/api/tasks/add
+Content-Type: application/json
+{
+  "UserId": "1C48F7A0-2DBC-42D8-B31C-E53B6B2244B5",
+  "Title": "go to gym",
+  "Note": "buy protein bar",
+  "DueDate": "2025-06-13T05:30:00",
+  "Priority": 2
+}
+
+###
+
+POST {{ToDoApp.API_HostAddress}}/api/tasks/add
+Content-Type: application/json
+{
+  "UserId": "1C48F7A0-2DBC-42D8-B31C-E53B6B2244B5",
+  "Title": "buy gift for abdo's birthday",
+  "Note": "buy a new watch",
+  "DueDate": "2025-08-22T07:30:00",
+  "Priority": 0
+}
 
 ###

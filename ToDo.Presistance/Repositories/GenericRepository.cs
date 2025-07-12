@@ -12,10 +12,11 @@ namespace ToDo.Presistance.Repositories
         {
             _context = context;
         }
-        public virtual async Task<int> AddAsync(T entity)
+        public virtual async Task<bool> AddAsync(T entity)
         {
             await _context.Set<T>().AddAsync(entity);
-            return await _context.SaveChangesAsync();
+            int result = await _context.SaveChangesAsync();
+            return result == 1;
         }
         public virtual async Task<T> UpdateAsync(T entity)
         {

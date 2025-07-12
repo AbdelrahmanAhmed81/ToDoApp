@@ -16,6 +16,7 @@ namespace ToDo.Presistance.Extensions
                     options.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName);
                 });
 
+
             services.AddScoped<ITaskRepository, TaskRepository>();
         }
     }
