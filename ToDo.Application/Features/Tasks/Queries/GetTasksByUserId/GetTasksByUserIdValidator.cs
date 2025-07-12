@@ -11,7 +11,7 @@ namespace ToDo.Application.Features.Tasks.Queries.GetTasksByUserId
         {
             _userRepository = userRepository;
 
-            RuleFor(request => request.UserId)
+            RuleFor(request => request.RequestSenderUserId)
                 .MustAsync(_userRepository.IsUserExistsAsync).WithMessage("User not found");
         }
 

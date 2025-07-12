@@ -1,6 +1,6 @@
 @ToDoApp.API_HostAddress = https://localhost:44301
 
-GET {{ToDoApp.API_HostAddress}}/api/tasks/user-tasks/1C48F7A0-2DBC-42D8-B31C-E53B6B2244B5
+GET {{ToDoApp.API_HostAddress}}/api/tasks/user-tasks
 Accept: application/json
 
 ###
@@ -8,15 +8,14 @@ Accept: application/json
 POST {{ToDoApp.API_HostAddress}}/api/tasks/add
 Content-Type: application/json
 {
-  "UserId": "1C48F7A0-2DBC-42D8-B31C-E53B6B2244B5",
   "Title": "go to gym",
   "Note": "buy protein bar",
-  "DueDate": "2025-07-13T05:30:00",
+  "DueDate": "2025-07-20T05:30:00",
   "Priority": 2
 }
 ###
 
-Delete {{ToDoApp.API_HostAddress}}/api/tasks/delete/5B59BA9D-000D-40C0-9984-D40C4044BB1B
+Delete {{ToDoApp.API_HostAddress}}/api/tasks/delete/f588c7c6-bf5c-4103-9334-f57424333d9b
 Content-Type: application/json
 
 ###
@@ -25,11 +24,11 @@ Content-Type: application/json
 PUT {{ToDoApp.API_HostAddress}}/api/tasks/update
 Content-Type: application/json
 {
-  "Id":"5AD07067-D57F-4E54-AABA-9A7B70D3E107",
-  "Title": "go to gym",
-  "Note": "buy 3 protein bars",
-  "DueDate": "2025-07-13T05:30:00",
-  "Priority": 2,
+  "Id":"91a92362-1c2e-4149-a84a-4d4d6a23c367",
+  "Title": "prepare for christmas trip",
+  "Note": "prepare your passport",
+  "DueDate": "2025-12-10T14:00:00",
+  "Priority": 0,
   "IsDone": true
 }
 

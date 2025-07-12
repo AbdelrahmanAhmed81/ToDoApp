@@ -1,5 +1,4 @@
 ﻿using Ardalis.Result;
-using AutoMapper;
 using MediatR;
 using ToDo.Application.Contracts.Repositories;
 
@@ -8,12 +7,10 @@ namespace ToDo.Application.Features.Tasks.Commands.DeleteTask
     public class DeleteTaskHandler : IRequestHandler<DeleteTaskRequest, Result<bool>>
     {
         private readonly ITaskRepository _taskRepository;
-        private readonly IMapper _mapper;
 
-        public DeleteTaskHandler(ITaskRepository taskRepository, IMapper mapper)
+        public DeleteTaskHandler(ITaskRepository taskRepository)
         {
             _taskRepository = taskRepository;
-            _mapper = mapper;
         }
         public async Task<Result<bool>> Handle(DeleteTaskRequest request, CancellationToken cancellationToken)
         {
@@ -23,6 +20,11 @@ namespace ToDo.Application.Features.Tasks.Commands.DeleteTask
                 if (task is null)
                 {
                     return Result.Invalid(new ValidationError($"Task with Id {request.TaskId} not found"));
+                }
+
+                if (task.UserId != request.RequestSenderUserId)
+                {
+                    return Result.Unauthorized($"User has no access to manage this content");
                 }
 
                 var deletionResult = await _taskRepository.DeleteAsync(task);

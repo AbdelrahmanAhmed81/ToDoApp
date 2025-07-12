@@ -4,6 +4,7 @@ namespace ToDo.Application.DTOs
 {
     public class TaskDTO
     {
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public DateTime DueDate { get; set; }
         public string Note { get; set; }

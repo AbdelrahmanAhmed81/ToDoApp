@@ -1,9 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
-using ToDo.Application.Features.Tasks.Commands.CreateTask;
-using ToDo.Application.Features.Tasks.Commands.UpdateTask;
-using ToDo.Application.Features.Tasks.Queries.GetTasksByUserId;
+using ToDo.Application.Features.Tasks;
 
 namespace ToDo.Application.Extensions
 {
@@ -22,9 +20,7 @@ namespace ToDo.Application.Extensions
                 options.Lifetime = ServiceLifetime.Scoped;
             });
 
-            services.AddScoped<CreateTaskValidator>();
-            services.AddScoped<UpdateTaskValidator>();
-            services.AddScoped<GetTasksByUserIdValidator>();
+            services.RegisterTasksFeatureServices(configuration);
         }
     }
 }

@@ -28,7 +28,13 @@ namespace ToDo.Application.Features.Tasks.Commands.UpdateTask
                     return Result.Invalid(validationResult.Errors.Select(e => new ValidationError(e.ErrorMessage)));
                 }
 
-                var taskEntity = _mapper.Map<TaskEntity>(request.UpdateTaskDTO);
+                var taskEntity = await _taskRepository.GetByIdAsync(request.UpdateTaskDTO.ID, false);
+                if (taskEntity.UserId != request.RequestSenderUserId)
+                {
+                    return Result.Unauthorized($"User has no access to manage this content");
+                }
+
+                taskEntity = _mapper.Map<TaskEntity>(request.UpdateTaskDTO);
                 taskEntity.UserId = request.RequestSenderUserId;
 
                 var updatingResult = await _taskRepository.UpdateAsync(taskEntity);

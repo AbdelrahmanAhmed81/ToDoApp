@@ -29,7 +29,7 @@ namespace ToDo.Application.Features.Tasks.Queries.GetTasksByUserId
                     return Result.Invalid(validationResult.Errors.Select(e => new ValidationError(e.ErrorMessage)));
                 }
 
-                var userTaks = await _taskRepository.GetTasksByUserIdAsync(request.UserId);
+                var userTaks = await _taskRepository.GetTasksByUserIdAsync(request.RequestSenderUserId);
                 if (userTaks == null || !userTaks.Any())
                 {
                     return Result.NoContent();

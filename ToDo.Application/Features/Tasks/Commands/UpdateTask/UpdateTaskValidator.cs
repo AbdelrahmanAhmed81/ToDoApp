@@ -1,24 +1,11 @@
 ﻿using FluentValidation;
-using ToDo.Application.Contracts.Repositories;
 
 namespace ToDo.Application.Features.Tasks.Commands.UpdateTask
 {
     public class UpdateTaskValidator : AbstractValidator<UpdateTaskRequest>
     {
-        private readonly ITaskRepository _taskRepository;
-        private readonly IUserRepository _userRepository;
-
-        public UpdateTaskValidator(ITaskRepository taskRepository, IUserRepository userRepository)
+        public UpdateTaskValidator()
         {
-            _taskRepository = taskRepository;
-            _userRepository = userRepository;
-
-            RuleFor(request => request.RequestSenderUserId)
-                .MustAsync(_userRepository.IsUserExistsAsync).WithMessage("User not found");
-
-            RuleFor(request => request.UpdateTaskDTO.ID)
-                .MustAsync(_taskRepository.IsTaskExists).WithMessage("Task not found");
-
             RuleFor(request => request.UpdateTaskDTO.Title)
                 .NotNull().WithMessage("Task title cannot be null")
                 .NotEmpty().WithMessage("Task title cannot be empty string")
