@@ -10,17 +10,25 @@ namespace ToDo.Application.Features.Tasks.Queries.GetTasksByUserId
     public class GetTasksByUserIdHandler : IRequestHandler<GetTasksByUserIdRequest, Result<IEnumerable<TaskDTO>>>
     {
         private readonly ITaskRepository _taskRepository;
+        private readonly GetTasksByUserIdValidator _validator;
         private readonly IMapper _mapper;
 
-        public GetTasksByUserIdHandler(ITaskRepository taskRepository, IMapper mapper)
+        public GetTasksByUserIdHandler(ITaskRepository taskRepository,GetTasksByUserIdValidator validator, IMapper mapper)
         {
             _taskRepository = taskRepository;
+            _validator = validator;
             _mapper = mapper;
         }
         public async Task<Result<IEnumerable<TaskDTO>>> Handle(GetTasksByUserIdRequest request, CancellationToken cancellationToken)
         {
             try
             {
+                var validationResult = await _validator.ValidateAsync(request, cancellationToken);
+                if (!validationResult.IsValid)
+                {
+                    return Result.Invalid(validationResult.Errors.Select(e => new ValidationError(e.ErrorMessage)));
+                }
+
                 var userTaks = await _taskRepository.GetTasksByUserIdAsync(request.UserId);
                 if (userTaks == null || !userTaks.Any())
                 {

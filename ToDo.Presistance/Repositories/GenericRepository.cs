@@ -27,9 +27,9 @@ namespace ToDo.Presistance.Repositories
         }
         public virtual async Task<bool> DeleteAsync(T entity)
         {
-            _context.Remove(entity);
-            var d = await _context.SaveChangesAsync();
-            return d > 0 ? true : false;
+            _context. Remove(entity);
+            int result = await _context.SaveChangesAsync();
+            return result == 1;
         }
         public virtual async Task<IEnumerable<T>> GetAllAsync()
         {

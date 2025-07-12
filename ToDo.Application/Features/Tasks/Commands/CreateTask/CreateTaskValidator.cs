@@ -1,10 +1,4 @@
 ﻿using FluentValidation;
-using FluentValidation.Results;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using ToDo.Application.Contracts.Repositories;
 
 namespace ToDo.Application.Features.Tasks.Commands.CreateTask
@@ -20,7 +14,7 @@ namespace ToDo.Application.Features.Tasks.Commands.CreateTask
             _userRepository = userRepository;
 
             RuleFor(request => request.CreateTaskDTO.UserId)
-                .MustAsync(DoesUserExists).WithMessage("User not found");
+                .MustAsync(_userRepository.IsUserExistsAsync).WithMessage("User not found");
 
             RuleFor(request => request.CreateTaskDTO.Title)
                 .NotNull().WithMessage("Task title cannot be null")
@@ -33,15 +27,6 @@ namespace ToDo.Application.Features.Tasks.Commands.CreateTask
 
             RuleFor(request => request.CreateTaskDTO.DueDate)
                 .GreaterThan(DateTime.UtcNow.AddMinutes(1)).WithMessage("Task due date is not valid");
-        }
-
-        private async Task<bool> DoesUserExists(CreateTaskRequest request, Guid userId, CancellationToken cancellationToken)
-        {
-            var user = await _userRepository.GetUserAsync(userId);
-            if (user == null)
-            { return false; }
-
-            return true;
         }
 
         private async Task<bool> IsTitleUnique(CreateTaskRequest request, string title, CancellationToken cancellationToken)

@@ -15,5 +15,11 @@ namespace ToDo.Presistance.Repositories
         {
             return await _context.Tasks.AsNoTracking().Where(t => t.UserId == userId).ToListAsync();
         }
+
+        public async Task<bool> IsTaskExists(Guid taskId, CancellationToken token)
+        {
+            var task = await GetByIdAsync(taskId);
+            return task != null;
+        }
     }
 }

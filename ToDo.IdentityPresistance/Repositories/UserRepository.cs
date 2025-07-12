@@ -16,5 +16,11 @@ namespace ToDo.IdentityPresistance.Repositories
         {
             return await _userManager.FindByIdAsync(id.ToString());
         }
+
+        public async Task<bool> IsUserExistsAsync(Guid id, CancellationToken cancellationToken)
+        {
+            var user = await GetUserAsync(id);
+            return user != null;
+        }
     }
 }

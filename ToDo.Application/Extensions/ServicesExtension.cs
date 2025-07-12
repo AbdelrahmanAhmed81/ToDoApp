@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 using ToDo.Application.Features.Tasks.Commands.CreateTask;
+using ToDo.Application.Features.Tasks.Queries.GetTasksByUserId;
 
 namespace ToDo.Application.Extensions
 {
@@ -21,6 +22,7 @@ namespace ToDo.Application.Extensions
             });
 
             services.AddScoped<CreateTaskValidator>();
+            services.AddScoped<GetTasksByUserIdValidator>();
         }
     }
 }

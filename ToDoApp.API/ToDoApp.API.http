@@ -39,3 +39,8 @@ Content-Type: application/json
 }
 
 ###
+
+Delete {{ToDoApp.API_HostAddress}}/api/tasks/delete/E9895866-C02B-4EAC-A7E0-8C6A2D1C7060
+Content-Type: application/json
+
+###

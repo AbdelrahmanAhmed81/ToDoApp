@@ -22,10 +22,10 @@ namespace ToDo.Application.Features.Tasks.Commands.CreateTask
         {
             try
             {
-                var validatationResult = await _requestValidator.ValidateAsync(request, cancellationToken);
-                if (!validatationResult.IsValid)
+                var validationResult = await _requestValidator.ValidateAsync(request, cancellationToken);
+                if (!validationResult.IsValid)
                 {
-                    return Result.Invalid(validatationResult.Errors.Select(e => new ValidationError(e.ErrorMessage)));
+                    return Result.Invalid(validationResult.Errors.Select(e => new ValidationError(e.ErrorMessage)));
                 }
 
                 var taskEntity = _mapper.Map<TaskEntity>(request.CreateTaskDTO);
